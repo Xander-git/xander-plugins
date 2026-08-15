@@ -1,7 +1,7 @@
 {
   "name": "xander-workflow",
-  "version": "0.1.0",
-  "description": "Engineering workflow skills: weigh design options, port reference algorithms rigorously, audit duplication, search code structurally with ast-grep, and write up a session.",
+  "version": "0.2.0",
+  "description": "Engineering workflow skills: weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
   "author": {
     "name": "Alexander Nguyen"
   },
@@ -11,8 +11,8 @@
   "keywords": [
     "design",
     "refactoring",
-    "code-search",
-    "ast-grep",
+    "duplication",
+    "code-review",
     "documentation"
   ]
 }

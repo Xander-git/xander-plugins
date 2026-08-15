@@ -18,7 +18,7 @@ Browse everything with `/plugin marketplace browse xander-plugins`.
 | Plugin | What it does |
 |---|---|
 | [`execute-plan-orchestration`](plugins/execute-plan-orchestration) | Turns a multi-task implementation plan into right-sized subagent clusters — tag tasks by shape, group them, assign model tier and reasoning effort, place review gates. Ships the `plan-reviewer` and `implementation-test-reviewer` agents that staff those gates. |
-| [`xander-workflow`](plugins/xander-workflow) | Five workflow skills: `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `ast-grep`, `summarize-session`. |
+| [`xander-workflow`](plugins/xander-workflow) | Four workflow skills: `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `summarize-session`. |
 
 ## Repository layout
 
