@@ -1,6 +1,6 @@
 {
-  "name": "xander",
-  "version": "0.3.0",
+  "name": "xander-local",
+  "version": "0.3.1",
   "description": "Engineering workflow skills and review agents: refine a plan to convergence, staff its execution with right-sized subagent clusters, weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
   "author": {
     "name": "Alexander Nguyen"

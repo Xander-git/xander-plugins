@@ -1,7 +1,7 @@
-# xander
+# xander-local
 
-Everything under one namespace: `xander:<skill>` and `xander:<agent>`. Six skills
-and five review agents covering the parts of a task that aren't writing the code —
+Everything under one namespace: `xander-local:<skill>` and `xander-local:<agent>`.
+Six skills and five review agents covering the parts of a task that aren't writing the code —
 refining a plan until it holds up, staffing its execution, deciding what to build,
 transcribing an outside algorithm faithfully, finding what's duplicated, and
 writing up what happened.
@@ -10,7 +10,7 @@ writing up what happened.
 
 ```
 /plugin marketplace add Xander-git/xander-plugins
-/plugin install xander@xander-plugins
+/plugin install xander-local@xander-plugins
 ```
 
 ## Skills

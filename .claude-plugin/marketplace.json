@@ -2,17 +2,17 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "xander-plugins",
   "description": "Alexander Nguyen's Claude Code plugins — workflow skills for planning, orchestrating, and verifying agent work.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "owner": {
     "name": "Alexander Nguyen",
     "url": "https://github.com/Xander-git"
   },
   "plugins": [
     {
-      "name": "xander",
-      "source": "./plugins/xander",
+      "name": "xander-local",
+      "source": "./plugins/xander-local",
       "description": "Engineering workflow skills and review agents: refine a plan to convergence through a reviewer panel, staff its execution with right-sized subagent clusters, weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Alexander Nguyen"
       },

@@ -7,19 +7,20 @@ skills for planning, orchestrating, and verifying agent work.
 
 ```
 /plugin marketplace add Xander-git/xander-plugins
-/plugin install xander@xander-plugins
+/plugin install xander-local@xander-plugins
 ```
 
 Browse everything with `/plugin marketplace browse xander-plugins`.
 
 ## Plugins
 
-One plugin, so everything lands under a single `xander:` namespace —
-`xander:plan-refinery`, `xander:dedupe-scanner`, `xander:plan-reviewer`, and so on.
+One plugin, so everything lands under a single `xander-local:` namespace —
+`xander-local:plan-refinery`, `xander-local:dedupe-scanner`,
+`xander-local:plan-reviewer`, and so on.
 
 | Plugin | What it does |
 |---|---|
-| [`xander`](plugins/xander) | Six workflow skills — `plan-refinery`, `execute-plan-orchestration`, `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `summarize-session` — plus the five review agents that staff their gates: `general-reviewer`, `data-flow-reviewer`, `simplicity-reviewer`, `plan-reviewer`, `implementation-test-reviewer`. |
+| [`xander-local`](plugins/xander-local) | Six workflow skills — `plan-refinery`, `execute-plan-orchestration`, `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `summarize-session` — plus the five review agents that staff their gates: `general-reviewer`, `data-flow-reviewer`, `simplicity-reviewer`, `plan-reviewer`, `implementation-test-reviewer`. |
 
 ## Repository layout
 
