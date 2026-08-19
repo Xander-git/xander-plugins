@@ -2,17 +2,17 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "xander-plugins",
   "description": "Alexander Nguyen's Claude Code plugins — workflow skills for planning, orchestrating, and verifying agent work.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "owner": {
     "name": "Alexander Nguyen",
     "url": "https://github.com/Xander-git"
   },
   "plugins": [
     {
-      "name": "execute-plan-orchestration",
-      "source": "./plugins/execute-plan-orchestration",
-      "description": "Turn a multi-task implementation plan into right-sized subagent clusters: tag tasks by shape, group them, assign model tier and reasoning effort, and place review gates. Ships the plan-reviewer and implementation-test-reviewer agents that staff those gates.",
-      "version": "0.1.0",
+      "name": "xander",
+      "source": "./plugins/xander",
+      "description": "Engineering workflow skills and review agents: refine a plan to convergence through a reviewer panel, staff its execution with right-sized subagent clusters, weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
+      "version": "0.3.0",
       "author": {
         "name": "Alexander Nguyen"
       },
@@ -20,49 +20,15 @@
       "license": "MIT",
       "category": "workflow",
       "keywords": [
+        "planning",
         "orchestration",
         "subagents",
-        "planning",
-        "parallelism",
-        "code-review"
-      ]
-    },
-    {
-      "name": "xander-workflow",
-      "source": "./plugins/xander-workflow",
-      "description": "Engineering workflow skills: weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Alexander Nguyen"
-      },
-      "repository": "https://github.com/Xander-git/xander-plugins",
-      "license": "MIT",
-      "category": "workflow",
-      "keywords": [
-        "design",
+        "review",
+        "convergence",
         "refactoring",
         "duplication",
         "code-review",
         "documentation"
-      ]
-    },
-    {
-      "name": "plan-refinery",
-      "source": "./plugins/plan-refinery",
-      "description": "Iterate a design spec + implementation plan through a reviewer panel until convergence: general, data-flow, and simplicity reviewers, rotating specialists, a provenance-locked concern ledger, and evidence-based conflict resolution.",
-      "version": "0.2.0",
-      "author": {
-        "name": "Alexander Nguyen"
-      },
-      "repository": "https://github.com/Xander-git/xander-plugins",
-      "license": "MIT",
-      "category": "workflow",
-      "keywords": [
-        "planning",
-        "review",
-        "subagents",
-        "convergence",
-        "spec"
       ]
     }
   ]

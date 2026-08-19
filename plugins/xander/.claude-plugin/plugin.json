@@ -1,0 +1,19 @@
+{
+  "name": "xander",
+  "version": "0.3.0",
+  "description": "Engineering workflow skills and review agents: refine a plan to convergence, staff its execution with right-sized subagent clusters, weigh design options, port reference algorithms rigorously, audit duplication, and write up a session.",
+  "author": {
+    "name": "Alexander Nguyen"
+  },
+  "homepage": "https://github.com/Xander-git/xander-plugins",
+  "repository": "https://github.com/Xander-git/xander-plugins",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "orchestration",
+    "subagents",
+    "review",
+    "refactoring",
+    "documentation"
+  ]
+}

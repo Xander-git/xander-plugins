@@ -7,20 +7,19 @@ skills for planning, orchestrating, and verifying agent work.
 
 ```
 /plugin marketplace add Xander-git/xander-plugins
-/plugin install execute-plan-orchestration@xander-plugins
-/plugin install xander-workflow@xander-plugins
-/plugin install plan-refinery@xander-plugins
+/plugin install xander@xander-plugins
 ```
 
 Browse everything with `/plugin marketplace browse xander-plugins`.
 
 ## Plugins
 
+One plugin, so everything lands under a single `xander:` namespace —
+`xander:plan-refinery`, `xander:dedupe-scanner`, `xander:plan-reviewer`, and so on.
+
 | Plugin | What it does |
 |---|---|
-| [`execute-plan-orchestration`](plugins/execute-plan-orchestration) | Turns a multi-task implementation plan into right-sized subagent clusters — tag tasks by shape, group them, assign model tier and reasoning effort, place review gates. Ships the `plan-reviewer` and `implementation-test-reviewer` agents that staff those gates. |
-| [`xander-workflow`](plugins/xander-workflow) | Four workflow skills: `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `summarize-session`. |
-| [`plan-refinery`](plugins/plan-refinery) | Iterates a design spec + implementation plan through a reviewer panel (general, data-flow, simplicity, rotating specialists) until no blocking concerns remain — with a provenance-locked ledger, precedence-table conflict resolution, and user-gated spec changes. |
+| [`xander`](plugins/xander) | Six workflow skills — `plan-refinery`, `execute-plan-orchestration`, `present-solutions`, `porting-a-reference-algorithm`, `dedupe-scanner`, `summarize-session` — plus the five review agents that staff their gates: `general-reviewer`, `data-flow-reviewer`, `simplicity-reviewer`, `plan-reviewer`, `implementation-test-reviewer`. |
 
 ## Repository layout
 
