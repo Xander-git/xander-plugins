@@ -83,6 +83,8 @@ Every `gap` or `mismatch` row must correspond to a numbered concern.
 
 ## Output format
 
+Keep the report terse: the trace tables, concerns, and verdict ARE the
+report. A few lines of context at most — no narrative analysis sections.
 End your report with exactly this structure:
 
 ### Concerns

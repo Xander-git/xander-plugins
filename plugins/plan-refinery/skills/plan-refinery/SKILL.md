@@ -43,11 +43,12 @@ Create `<spec-dir>/refinery/` next to the spec:
 
 1. **Evaluate the algorithm-fidelity spawn rule** against this round's diff
    (round 1: everything counts as touched) — see specialists.md.
-2. **Dispatch the panel in parallel**: `general-reviewer`,
-   `data-flow-reviewer`, `simplicity-reviewer`, plus the selected specialist
-   and (if spawned) algorithm-fidelity. Each brief contains: spec path, plan
-   path, brief path, ledger path, and for rounds ≥ 2 the diff of spec and
-   plan since that reviewer's last round (computed from snapshots).
+2. **Dispatch the due reviewers in parallel** — round 1: the full panel
+   (`general-reviewer`, `data-flow-reviewer`, `simplicity-reviewer`, plus the
+   selected specialist and, if spawned, algorithm-fidelity); rounds ≥ 2: per
+   the cadence rules in Round economics below. Each brief contains: spec
+   path, plan path, brief path, ledger path, and for rounds ≥ 2 the diff of
+   spec and plan since that reviewer's last round (computed from snapshots).
 3. **Collect reports.** Each ends with severity-tagged concerns bearing
    stable IDs and `VERDICT: APPROVE` or `VERDICT: REVISE`.
 4. **Merge into the ledger.** Dedupe cross-reviewer duplicates: keep one
@@ -83,6 +84,35 @@ Create `<spec-dir>/refinery/` next to the spec:
   cost is controlled — keep diffs honest and snapshots exact.
 - After round 2, reviewers may not raise new sub-Critical concerns.
 
+## Round economics (rounds ≥ 2)
+
+Round 1 is discovery and gets the full panel. Later rounds are mostly
+verification — cheaper work. Exploit the asymmetry:
+
+- **Cadence scheduling** — dispatch only reviewers whose lane the round's
+  diff touches:
+
+  | Reviewer | Runs when |
+  |---|---|
+  | `general-reviewer` | every round (owns correctness) |
+  | `data-flow-reviewer` | diff touches a boundary, contract, or flow |
+  | `simplicity-reviewer` | diff is net-additive beyond a trivial threshold |
+  | rotating specialist | diff touches its domain |
+  | algorithm-fidelity | its existing per-round spawn rule |
+
+  Lane assignment is your judgment call from the diff.
+- **Resolution verifier** — each round ≥ 2, dispatch one mid-tier
+  (Sonnet-class) `general-purpose` agent to check every `resolved` ledger
+  entry against the diff: was the fix applied, and does it address the
+  concern as written. It never reviews new content — that is lane work.
+  Escalate anything ambiguous, contested, or suspicious to the owning Opus
+  reviewer, re-dispatched narrowly; escalate on any doubt.
+- **Full-panel sign-off** — convergence is only declared after a final round
+  in which every panel member (verification- and diff-scoped, so small)
+  returns `VERDICT: APPROVE` on the final plan state. This is the backstop
+  for cadence misjudgments. The simplicity reviewer stays Opus regardless:
+  it argues precedence fights and must not do so from a weaker model.
+
 ## Conflict resolution — no tug-of-wars
 
 A reviewer flagging `CONFLICT with <ID>` (challenging a provenance-locked
@@ -117,8 +147,9 @@ Guards go at the algorithm's boundary, never inside the transcription.
 ## Exit conditions
 
 - **Converged:** every reviewer returned `VERDICT: APPROVE` (no open
-  Critical/Major). List remaining Minor/Advisory items in the final summary;
-  they never extend the loop.
+  Critical/Major) in a final full-panel sign-off round on the final plan
+  state (see Round economics). List remaining Minor/Advisory items in the
+  final summary; they never extend the loop.
 - **Round cap** (default 4): surface remaining open concerns to the user
   with your recommendation instead of looping further.
 - **User-input short-circuit:** `needs-user-input` concerns surface

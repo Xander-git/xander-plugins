@@ -80,7 +80,9 @@ Acknowledge sound decisions explicitly; do not manufacture objections.
 
 ## Output format
 
-End your report with exactly this structure:
+Keep the report terse: the concerns and verdict ARE the report. A few lines
+of context at most — no narrative analysis sections. End your report with
+exactly this structure:
 
 ### Concerns
 

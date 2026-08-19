@@ -46,7 +46,9 @@ Also: register the plugin in the root `.claude-plugin/marketplace.json`.
 All reviewers are **read-only on spec and plan** (`disallowedTools: Write, Edit,
 NotebookEdit`), model `opus`, and end their report with a machine-readable
 verdict (see Loop protocol). Each charter contains an explicit **"You do NOT
-review"** list so mandates stay disjoint.
+review"** list so mandates stay disjoint. Reports are **terse**: the concern
+list and verdict ARE the report — a few lines of context at most, no narrative
+analysis sections (Opus output is the loop's second-largest cost).
 
 ### 1. general-reviewer (fixed; effort: high)
 
@@ -172,9 +174,10 @@ citations; never verify from memory. Every deviation is either **undeclared**
 
 ### Each round
 1. Evaluate the algorithm-fidelity spawn rule against this round's diff.
-2. Dispatch the panel **in parallel**, each briefed with: spec path, plan path,
-   brief path, ledger path, and (rounds ≥2) the spec/plan diff since their last
-   review.
+2. Dispatch the due reviewers **in parallel** — round 1: the full panel;
+   rounds ≥2: per the cadence rules (see Round economics) — each briefed with:
+   spec path, plan path, brief path, ledger path, and (rounds ≥2) the
+   spec/plan diff since their last review.
 3. Each reviewer returns a report ending with:
    - `VERDICT: APPROVE | REVISE`
    - Concerns, each with a **stable ID** (`GEN-3`, `FLOW-1`, …), severity
@@ -197,9 +200,36 @@ citations; never verify from memory. Every deviation is either **undeclared**
   raised. The orchestrator may downgrade implausible severities; a downgraded
   late concern becomes Advisory.
 
+### Round economics (rounds ≥2)
+
+Round 1 is discovery and gets the full panel; later rounds are mostly
+verification, which is cheaper work. Two mechanisms exploit that asymmetry:
+
+- **Cadence scheduling.** Only reviewers whose lane the round's diff touches
+  are dispatched: `general-reviewer` every round (it owns correctness);
+  `data-flow-reviewer` when the diff touches a boundary, contract, or flow;
+  `simplicity-reviewer` when the diff is net-additive beyond a trivial
+  threshold (it audits additions); the rotating specialist when the diff
+  touches its domain; algorithm-fidelity per its existing spawn rule. Lane
+  assignment is the orchestrator's judgment call from the diff.
+- **Resolution verifier.** A mid-tier (Sonnet-class) agent checks every
+  `resolved` ledger entry against the diff: was the fix applied, and does it
+  address the concern as written. It never reviews new content — that is
+  lane work. Anything ambiguous, contested, or suspicious escalates to the
+  owning Opus reviewer, re-dispatched narrowly; escalate on any doubt. This
+  is mechanical diffing of ledger claims against text, so the
+  never-verify-with-a-weaker-model rule is respected via the escalation path.
+- **Full-panel sign-off.** Convergence is only declared after a final round
+  in which every panel member (verification- and diff-scoped) returns
+  APPROVE on the final plan state — the backstop for cadence misjudgments.
+  The simplicity reviewer stays Opus regardless: it is the counterweight in
+  precedence fights and must not argue from a weaker model.
+
 ### Exit conditions
-- **Converged:** all reviewers return `APPROVE` (no open Critical/Major).
-  Advisory/Minor items are listed in the final summary, not loop-extending.
+- **Converged:** all reviewers return `APPROVE` (no open Critical/Major) in a
+  final full-panel sign-off round on the final plan state (see Round
+  economics). Advisory/Minor items are listed in the final summary, not
+  loop-extending.
 - **Round cap** (default 4): remaining open concerns are surfaced to the user
   with the orchestrator's recommendation, instead of looping further.
 - **User-input short-circuit:** any concern flagged `needs-user-input`

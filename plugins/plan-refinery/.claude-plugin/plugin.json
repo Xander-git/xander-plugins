@@ -1,6 +1,6 @@
 {
   "name": "plan-refinery",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Iterate a design spec + implementation plan through a reviewer panel until convergence: general, data-flow, and simplicity reviewers, rotating specialists, a provenance-locked concern ledger, and evidence-based conflict resolution.",
   "author": {
     "name": "Alexander Nguyen"
