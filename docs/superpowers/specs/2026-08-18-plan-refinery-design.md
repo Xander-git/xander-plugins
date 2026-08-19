@@ -118,7 +118,9 @@ Does NOT review: correctness, feasibility, or data flow.
 ### Rotating specialists (`references/specialists.md`)
 
 The orchestrator picks **at most one per run** at loop start, based on what the
-spec touches — or none. Roster emphasizes scientific computing:
+spec touches — or none. The roster's default emphasis is scientific computing,
+but it is not domain-locked — the user also builds UX-facing and data
+management systems, and the security and UX charters exist for those runs:
 
 - **numerics** — floating-point stability, tolerance derivation (mechanism-based
   per the user's test-integrity rules), conditioning, accumulation error,
@@ -130,6 +132,14 @@ spec touches — or none. Roster emphasizes scientific computing:
 - **performance** — profiling-informed concerns only; every concern must anchor
   to a spec-stated performance requirement or be tagged advisory (precedence
   tier 8).
+- **security** — for specs exposing services, handling credentials/PII, or
+  managing multi-user data: authn/authz at each boundary, injection surfaces,
+  secrets handling, data-access rules. Owns precedence tier 5.
+- **ux** — for specs with substantive user-facing interaction: loading/empty/
+  error states for every flow, feedback on long-running operations,
+  destructive-action confirmation, consistency of interaction patterns.
+  Complements (not duplicates) the data-flow reviewer: data-flow verifies the
+  chain works; ux reviews what the user experiences at each state of it.
 
 ### algorithm-fidelity specialist (conditional; exempt from the ≤1 cap)
 
