@@ -8,7 +8,13 @@ Specialists are not standalone agent files. Dispatch each as a
 3. This read-only instruction: "Analysis only. Never write or edit any file."
 4. The standard loop-protocol and output-format blocks from any fixed panel
    agent (e.g. `agents/general-reviewer.md`), with the concern prefix
-   replaced by this specialist's prefix.
+   replaced by this specialist's prefix. Never skip this step — without it
+   the report has no parseable VERDICT line.
+
+Unlike the fixed agents, a specialist's read-only rule is prompt-enforced,
+not tool-enforced. After a specialist returns, verify it made no file
+modifications (`git status --porcelain` shows nothing unexpected); treat any
+write as a reviewer failure per the skill's reviewer-failure rule.
 
 ## Selection (rotating roster: at most ONE per run, or none)
 

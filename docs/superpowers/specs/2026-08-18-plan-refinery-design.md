@@ -52,8 +52,10 @@ review"** list so mandates stay disjoint.
 
 The merged workhorse. Extends the methodology of
 `execute-plan-orchestration/agents/plan-reviewer.md` (project-conventions
-context step, necessity challenge, logic/API validation, doc verification,
-concurrency analysis, edge cases) with a **traceability phase**:
+context step, logic/API validation, doc verification, concurrency analysis,
+edge cases) with a **traceability phase**. Deliberate deviation from the
+plan-reviewer template: its *necessity challenge* is delegated to the
+simplicity-reviewer to keep panel mandates disjoint:
 
 - **Spec → plan:** every spec requirement maps to a plan task; unmapped
   requirements are gaps (Critical or Major).
